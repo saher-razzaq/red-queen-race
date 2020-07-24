@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import RedQueen from './images/sprite_running-alice-queen_small.png';
 import useWebAnimations from "@wellyshen/use-web-animations";
-import Pawn from './images/r_pawn_upright_small.png'
+import Pawn from './images/r_pawn_upright_small.png';
 import Rook from './images/w_rook_small.png';
 import Palm1 from './images/palm1_small.png';
 import Palm2 from './images/palm2_small.png';
@@ -128,19 +128,20 @@ function Animation(){
         }
     }
         handleBackSpeed();
+       
         const handleSpeed=()=>{
             aliceAnimation().playbackRate*=1.1;
             handleBackSpeed()
         }
         setInterval(function(){
-            if(aliceAnimation()> .4){
+            if(aliceAnimation().playbackRate> .4){
                 aliceAnimation().playbackRate*=0.9;}
                 handleBackSpeed();
         },3000);
         document.addEventListener("click",handleSpeed);
         document.addEventListener("touchstart",handleSpeed);
         },
-        [background1Animation,background2Animation,foreground1Animation,foreground2Animation]
+        [aliceAnimation,background1Animation,background2Animation,foreground1Animation,foreground2Animation]
         )
 
     return (
